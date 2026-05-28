@@ -1,0 +1,154 @@
+/* Layout Wrapper */
+.builder-wrapper { 
+    display: flex; 
+    height: calc(100vh - 60px); 
+    overflow: hidden; 
+}
+
+.builder-sidebar { 
+    width: 300px; 
+    background: #f8f9fa; 
+    border-right: 1px solid #ddd; 
+    padding: 20px; 
+    overflow-y: auto; 
+}
+
+/* Main Canvas Area */
+.builder-canvas-area { 
+    flex-grow: 1; 
+    background: #525659; 
+    overflow: auto; 
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start;
+    padding: 100px 40px 40px 40px; 
+    position: relative;
+}
+
+/* Floating Toolbar */
+.canvas-controls {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    z-index: 2000; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    align-items: center;
+}
+
+.control-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+}
+
+.control-btn.grid-off { color: #ccc; }
+.active-align { color: #0d6efd; border-color: #0d6efd; background: #e7f1ff; }
+
+/* The PDF Sandwich Stack */
+.pdf-container { 
+    position: relative; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.3); 
+    background: #fff;
+    display: inline-block; 
+}
+
+#pdf-render {
+    display: block;
+    position: relative;
+    z-index: 1; /* Bottom Layer */
+}
+
+.drop-zone { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 1000 !important; /* Middle Layer - must be above canvas */
+    background: rgba(0,0,0,0); 
+    pointer-events: auto !important;
+}
+
+.drop-zone.show-grid {
+    background-image: 
+        linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px);
+    background-size: 10px 10px; 
+}
+
+/* Placed Fields */
+.placed-field { 
+    position: absolute; 
+    background: rgba(13, 110, 253, 0.15); 
+    border: 1px solid #0d6efd; 
+    padding: 2px 5px; 
+    font-size: 11px; 
+    cursor: move; 
+    z-index: 1100 !important; /* Top Layer - must be above drop-zone */
+    white-space: nowrap;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.placed-field.active { 
+    background: rgba(13, 110, 253, 0.3); 
+    border-width: 2px; 
+}
+
+.placed-field small { 
+    cursor: pointer; 
+    color: #dc3545; 
+    font-weight: bold; 
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+.resizer {
+    width: 8px;
+    height: 100%;
+    background: #0d6efd;
+    position: absolute;
+    right: -4px;
+    top: 0;
+    cursor: col-resize;
+    opacity: 0;
+}
+.placed-field.active .resizer { opacity: 0.5; }
+
+/* Alignment Classes */
+.text-left { justify-content: flex-start; text-align: left; }
+.text-center { justify-content: center; text-align: center; }
+.text-right { justify-content: flex-end; text-align: right; }
+
+/* Modals */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.custom-modal {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+}

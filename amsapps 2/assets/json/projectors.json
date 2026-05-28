@@ -1,0 +1,12 @@
+{
+  "Barco": {
+    "UDX-4K32": [
+      { "name": "Ultra Short Zoom", "min": 0.80, "max": 1.16 }
+    ]
+  },
+  "Epson": {
+    "EB-L1505UH": [
+      { "name": "ELPLM15 (Mid)", "min": 1.57, "max": 2.56 }
+    ]
+  }
+}
